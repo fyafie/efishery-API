@@ -1,0 +1,1423 @@
+{
+	"info": {
+		"_postman_id": "cb6e1a64-003e-43c3-ba75-a0e597703d98",
+		"name": "efishery",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19479131"
+	},
+	"item": [
+		{
+			"name": "chart",
+			"item": [
+				{
+					"name": "Get All Charts Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									"\r",
+									"// Memastikan response merupakan array dan jumlahnya\r",
+									"// minimal 1\r",
+									"let message = `Response body should be an array and contain \r",
+									"at least one item`;\r",
+									"pm.test(message, () => {\r",
+									"    const responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON).to.be.an(\"array\");\r",
+									"    pm.expect(responseJSON).lengthOf.at.least(1);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/carts')\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/carts",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"carts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single Cart Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/carts/5')\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/carts/5",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"carts",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Limit Chart Results Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									"\r",
+									"// Memastikan response merupakan array dan jumlahnya\r",
+									"// minimal 1\r",
+									"let message = `Response body should be an array and contain \r",
+									"at least one item`;\r",
+									"pm.test(message, () => {\r",
+									"    const responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON).to.be.an(\"array\");\r",
+									"    pm.expect(responseJSON).lengthOf.at.least(1);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/carts?limit=5')\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/carts?limit=5",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"carts"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sort Chart Results Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									"\r",
+									"// Memastikan response merupakan array dan jumlahnya\r",
+									"// minimal 1\r",
+									"let message = `Response body should be an array and contain \r",
+									"at least one item`;\r",
+									"pm.test(message, () => {\r",
+									"    const responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON).to.be.an(\"array\");\r",
+									"    pm.expect(responseJSON).lengthOf.at.least(1);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/carts?sort=desc')\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/carts?sort=desc",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"carts"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Carts in a Date Range Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									"\r",
+									"// Memastikan response merupakan array dan jumlahnya\r",
+									"// minimal 1\r",
+									"let message = `Response body should be an array and contain \r",
+									"at least one item`;\r",
+									"pm.test(message, () => {\r",
+									"    const responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON).to.be.an(\"array\");\r",
+									"    pm.expect(responseJSON).lengthOf.at.least(1);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/carts/user/1?startdate=2020-01-02&enddate=2020-02-02')\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/carts/user/1?startdate=2020-01-02&enddate=2020-02-02\n",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"carts",
+								"user",
+								"1"
+							],
+							"query": [
+								{
+									"key": "startdate",
+									"value": "2020-01-02"
+								},
+								{
+									"key": "enddate",
+									"value": "2020-02-02\n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Carts Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									"\r",
+									"// Memastikan response merupakan array dan jumlahnya\r",
+									"// minimal 1\r",
+									"let message = `Response body should be an array and contain \r",
+									"at least one item`;\r",
+									"pm.test(message, () => {\r",
+									"    const responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON).to.be.an(\"array\");\r",
+									"    pm.expect(responseJSON).lengthOf.at.least(1);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/carts/user/2')\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/carts/user/2",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"carts",
+								"user",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a New Chart Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/carts',{\r\n            method:\"POST\",\r\n            body:JSON.stringify(\r\n                {\r\n                    userId:5,\r\n                    date:2020-02-03,\r\n                    products:[{productId:5,quantity:1},{productId:1,quantity:5}]\r\n                }\r\n            )\r\n        })\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/carts",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"carts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Chart Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/carts/7',{\r\n            method:\"PUT\",\r\n            body:JSON.stringify(\r\n                {\r\n                    userId:3,\r\n                    date:2019-12-10,\r\n                    products:[{productId:1,quantity:3}]\r\n                }\r\n            )\r\n        })\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/carts/7",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"carts",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Cart Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/carts/6',{\r\n            method:\"DELETE\"\r\n        })\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/carts/6",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"carts",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "User login Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"kevinryan\",\r\n    \"password\": \"kev02937@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://fakestoreapi.com/auth/login",
+							"protocol": "https",
+							"host": [
+								"fakestoreapi",
+								"com"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "Get All Product Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									"\r",
+									"// Memastikan response merupakan array dan jumlahnya\r",
+									"// minimal 1\r",
+									"let message = `Response body should be an array and contain \r",
+									"at least one item`;\r",
+									"pm.test(message, () => {\r",
+									"    const responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON).to.be.an(\"array\");\r",
+									"    pm.expect(responseJSON).lengthOf.at.least(1);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/products')\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/products",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single Product Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/products/1')\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/products/1",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Limit Product Result Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									"\r",
+									"// Memastikan response merupakan array dan jumlahnya\r",
+									"// minimal 1\r",
+									"let message = `Response body should be an array and contain \r",
+									"at least one item`;\r",
+									"pm.test(message, () => {\r",
+									"    const responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON).to.be.an(\"array\");\r",
+									"    pm.expect(responseJSON).lengthOf.at.least(1);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/products?limit=5')\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/products?limit=5",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sort Product Result Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									"\r",
+									"// Memastikan response merupakan array dan jumlahnya\r",
+									"// minimal 1\r",
+									"let message = `Response body should be an array and contain \r",
+									"at least one item`;\r",
+									"pm.test(message, () => {\r",
+									"    const responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON).to.be.an(\"array\");\r",
+									"    pm.expect(responseJSON).lengthOf.at.least(1);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/products?sort=desc')\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/products?sort=desc",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products Categories Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									"\r",
+									"// Memastikan response merupakan array dan jumlahnya\r",
+									"// minimal 1\r",
+									"let message = `Response body should be an array and contain \r",
+									"at least one item`;\r",
+									"pm.test(message, () => {\r",
+									"    const responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON).to.be.an(\"array\");\r",
+									"    pm.expect(responseJSON).lengthOf.at.least(1);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/products/categories')\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/products/categories",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products in a Specific Category Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									"\r",
+									"// Memastikan response merupakan array dan jumlahnya\r",
+									"// minimal 1\r",
+									"let message = `Response body should be an array and contain \r",
+									"at least one item`;\r",
+									"pm.test(message, () => {\r",
+									"    const responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON).to.be.an(\"array\");\r",
+									"    pm.expect(responseJSON).lengthOf.at.least(1);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/products/category/jewelery')\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/products/category/jewelery",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								"category",
+								"jewelery"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add New Product Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/products',{\r\n            method:\"POST\",\r\n            body:JSON.stringify(\r\n                {\r\n                    title: 'test product',\r\n                    price: 13.5,\r\n                    description: 'lorem ipsum set',\r\n                    image: 'https://i.pravatar.cc',\r\n                    category: 'electronic'\r\n                }\r\n            )\r\n        })\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/products",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Product [put] Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/products/7',{\r\n            method:\"PUT\",\r\n            body:JSON.stringify(\r\n                {\r\n                    title: 'test product',\r\n                    price: 13.5,\r\n                    description: 'lorem ipsum set',\r\n                    image: 'https://i.pravatar.cc',\r\n                    category: 'electronic'\r\n                }\r\n            )\r\n        })\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/products/7",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Get all users Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									"\r",
+									"// Memastikan response merupakan array dan jumlahnya\r",
+									"// minimal 1\r",
+									"let message = `Response body should be an array and contain \r",
+									"at least one item`;\r",
+									"pm.test(message, () => {\r",
+									"    const responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON).to.be.an(\"array\");\r",
+									"    pm.expect(responseJSON).lengthOf.at.least(1);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/users')\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/users",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single user Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/users/1')\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/users/1",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Limit results Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									"\r",
+									"// Memastikan response merupakan array dan jumlahnya\r",
+									"// minimal 1\r",
+									"let message = `Response body should be an array and contain \r",
+									"at least one item`;\r",
+									"pm.test(message, () => {\r",
+									"    const responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON).to.be.an(\"array\");\r",
+									"    pm.expect(responseJSON).lengthOf.at.least(1);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/users?limit=5')\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/users?limit=5",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sort results Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									"\r",
+									"// Memastikan response merupakan array dan jumlahnya\r",
+									"// minimal 1\r",
+									"let message = `Response body should be an array and contain \r",
+									"at least one item`;\r",
+									"pm.test(message, () => {\r",
+									"    const responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON).to.be.an(\"array\");\r",
+									"    pm.expect(responseJSON).lengthOf.at.least(1);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/users?sort=desc')\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/users?sort=desc",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new user Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/users',{\r\n            method:\"POST\",\r\n            body:JSON.stringify(\r\n                {\r\n                    email:'John@gmail.com',\r\n                    username:'johnd',\r\n                    password:'m38rmF$',\r\n                    name:{\r\n                        firstname:'John',\r\n                        lastname:'Doe'\r\n                    },\r\n                    address:{\r\n                        city:'kilcoole',\r\n                        street:'7835 new road',\r\n                        number:3,\r\n                        zipcode:'12926-3874',\r\n                        geolocation:{\r\n                            lat:'-37.3159',\r\n                            long:'81.1496'\r\n                        }\r\n                    },\r\n                    phone:'1-570-236-7033'\r\n                }\r\n            )\r\n        })\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/users",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a users [put] Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/users/7',{\r\n            method:\"PUT\",\r\n            body:JSON.stringify(\r\n                {\r\n                email:'John@gmail.com',\r\n                username:'johnd',\r\n                password:'m38rmF$',\r\n                name:{\r\n                    firstname:'John',\r\n                    lastname:'Doe'\r\n                },\r\n                address:{\r\n                    city:'kilcoole',\r\n                    street:'7835 new road',\r\n                    number:3,\r\n                    zipcode:'12926-3874',\r\n                    geolocation:{\r\n                        lat:'-37.3159',\r\n                        long:'81.1496'\r\n                    }\r\n                },\r\n                phone:'1-570-236-7033'\r\n                }\r\n            )\r\n        })\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/users/7",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a users [patch] Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/users/7',{\r\n                method:\"PATCH\",\r\n                body:JSON.stringify(\r\n                    {\r\n                        email:'John@gmail.com',\r\n                        username:'johnd',\r\n                        password:'m38rmF$',\r\n                        name:{\r\n                            firstname:'John',\r\n                            lastname:'Doe'\r\n                        },\r\n                        address:{\r\n                            city:'kilcoole',\r\n                            street:'7835 new road',\r\n                            number:3,\r\n                            zipcode:'12926-3874',\r\n                            geolocation:{\r\n                                lat:'-37.3159',\r\n                                long:'81.1496'\r\n                            }\r\n                        },\r\n                        phone:'1-570-236-7033'\r\n                    }\r\n                )\r\n            })\r\n                .then(res=>res.json())\r\n                .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/users/7",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a user Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Memastikan bahwa response memiliki status code 200\r",
+									"pm.test(\"response status code 200\", () => {\r",
+									"    pm.response.to.have.status(200);   \r",
+									"});\r",
+									"\r",
+									"// Memastikan response berupa data json application/vnd.gramedia.v3+json\r",
+									"pm.test(`response Content-Type \r",
+									"header should be application/json; charset=utf-8`, () => {\r",
+									"    pm.expect(\r",
+									"        pm.response.headers.get(\"Content-Type\")\r",
+									"    ).to.equals(\"application/json; charset=utf-8\");\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fetch('https://fakestoreapi.com/users/6',{\r\n            method:\"DELETE\"\r\n        })\r\n            .then(res=>res.json())\r\n            .then(json=>console.log(json))"
+						},
+						"url": {
+							"raw": "{{API_URL}}/users/6",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
